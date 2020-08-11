@@ -13,6 +13,7 @@
 <body>
     <div id="board_area">
         <h1>게시판</h1>
+        <h4>게시글 목록</h4> 
         <table class="list-table">
             <thead>
                 <tr>
@@ -39,6 +40,7 @@
                     <tr>
                         <td width="70"><?php echo $board['idx']; ?></td>
                         <td width="500"><a href="/myBoard/page/board/read.php?idx=<?php echo $board["idx"];?> "><?php echo $title;?></a></td>
+                        <!-- 제목을 클릭하면 해당 게시글 내용을 볼 수 있도록 게시글의 id값을 통해 링크 -->
                         <td width="120"><?php echo $board['name']?></td>
                         <td width="100"><?php echo $board['date']?></td>
                         <td width="100"><?php echo $board['hit']; ?></td>
