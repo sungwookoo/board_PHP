@@ -27,16 +27,17 @@ $sql = mq("select * from board order by idx desc limit $limit_idx, $page_set");
 ?>
 
 <!doctype html>
+
 <head></head>
-    <meta charset="UTF-8">
-    <title>게시판</title>
-    <link rel="stylesheet" type="text/css" href="/myBoard/css/style.css">
+<meta charset="UTF-8">
+<title>게시판</title>
+<link rel="stylesheet" type="text/css" href="/myBoard/css/style.css">
 </head>
 
 <body>
     <div id="board_area">
         <h1>게시판</h1>
-        <h4>게시글 목록</h4> 
+        <h4>게시글 목록</h4>
         <p4>총 <?php echo $total ?>개의 게시글</p4>
         <table class="list-table">
             <thead>
@@ -61,17 +62,19 @@ $sql = mq("select * from board order by idx desc limit $limit_idx, $page_set");
                      // 0번째 문자부터 30글자까지 쓰고 뒤는 ... 으로 대체
                   }
             ?>
-                <tbody>
-                    <tr>
-                        <td width="70"><?php echo $board['idx']; ?></td>
-                        <td width="500"><a href="/myBoard/page/board/read.php?idx=<?php echo $board["idx"];?> "><?php echo $title;?></a></td>
-                        <!-- 제목을 클릭하면 해당 게시글 내용을 볼 수 있도록 게시글의 id값을 통해 링크 -->
-                        <td width="120"><?php echo $board['name']?></td>
-                        <td width="100"><?php echo $board['date']?></td>
-                        <td width="100"><?php echo $board['hit']; ?></td>
-                    </tr>
-                </tbody>
-            <?php } //while문 종료 ?> 
+            <tbody>
+                <tr>
+                    <td width="70"><?php echo $board['idx']; ?></td>
+                    <td width="500"><a
+                            href="/myBoard/page/board/read.php?idx=<?php echo $board["idx"];?> "><?php echo $title;?></a>
+                    </td>
+                    <!-- 제목을 클릭하면 해당 게시글 내용을 볼 수 있도록 게시글의 id값을 통해 링크 -->
+                    <td width="120"><?php echo $board['name']?></td>
+                    <td width="100"><?php echo $board['date']?></td>
+                    <td width="100"><?php echo $board['hit']; ?></td>
+                </tr>
+            </tbody>
+            <?php } //while문 종료 ?>
         </table>
         <div id="write_btn">
             <a href="/myBoard/page/board/write.php"><button>글쓰기</button></a>
@@ -94,7 +97,7 @@ $sql = mq("select * from board order by idx desc limit $limit_idx, $page_set");
             $next_block_page = $next_block*$block_set-($block_set-1); //다음블럭 페이지번호
 
             //페이징화면
-            echo ($prev_page > 0) ? "　　　　　　　　　　　　　　　　　　　　　　　　<a href='".$_SERVER['PHP_SELF']."?page=".$prev_page."'>[prev]</a> " : "　　　　　　　　　　　　　　　　　　　　　　　　[prev] "; 
+            echo ($prev_page > 0) ? "　　　　　　　　　　　　　　　　　　　　　　　<a href='".$_SERVER['PHP_SELF']."?page=".$prev_page."'>[prev]</a> " : "　　　　　　　　　　　　　　　　　　　　　　　[prev] "; 
             echo ($prev_block > 0) ? "<a href='".$_SERVER['PHP_SELF']."?page=".$prev_block_page."'>...</a> " : "... "; 
             for ($i=$first_page; $i<=$last_page; $i++) { 
                 echo ($i != $page) ?"<a href='".$_SERVER['PHP_SELF']."?page=".$i."'>$i</a> " : "<b>$i</b> "; 
@@ -102,7 +105,8 @@ $sql = mq("select * from board order by idx desc limit $limit_idx, $page_set");
             echo ($next_block <= $total_block) ? "<a href='".$_SERVER['PHP_SELF']."?page=".$next_block_page."'>...</a> " : "... "; 
             echo ($next_page <= $total_page) ? "<a href='".$_SERVER['PHP_SELF']."?page=".$next_page."'>[next]</a>" : "[next]"; 
         ?>
-        
+
     </div>
 </body>
+
 </html>
