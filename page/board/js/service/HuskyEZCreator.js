@@ -34,6 +34,7 @@ nhn.husky.EZCreator = new (function(){
 			var fOnAppLoad = htOptions.fOnAppLoad;
 			var bUseBlocker = htOptions.bUseBlocker;
 			var htParams = htOptions.htParams || null;
+			
 		}else{
 			// for backward compatibility only
 			oAppRef = arguments[0];
@@ -115,6 +116,7 @@ nhn.husky.EZCreator = new (function(){
 //		window.STime = new Date();
 		elIFrame.src = sSkinURI;
 		this.elIFrame = elIFrame;
+		
 	};
 	
 	this.showBlocker = function(){

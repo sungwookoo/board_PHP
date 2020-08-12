@@ -48,3 +48,14 @@ ul li {
 	margin-top:20px;
 	right: 0;
 }
+.img_btn {
+	margin-top: 1px;
+	margin-right:10px;
+	position: absolute;
+	right:0;
+	border: none;
+	width: 23px;
+	height: 23px;
+	cursor: pointer;
+	color:white;
+}

@@ -17,7 +17,7 @@
 
 <body>
     <div id="board_write">
-        <h1><a href="/myBoard">게시판</a></h1>
+        <h1><a href="/myBoard">게시판</a></h1><br>
         <h4>게시글 수정</h4>
         <div id="write_area">
             <form action="modify_ok.php?idx=<?php echo $bno; ?>" method="post">

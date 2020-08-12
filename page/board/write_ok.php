@@ -8,11 +8,17 @@ $title = $_POST['title'];
 $content = $_POST['content'];
 $date = date('Y-m-d');
 
+$tmpfile = $_FILES['b_file']['tmp_name'];
+$o_name = $_FILES['b_file']['name'];
+$filename = iconv("UTF-8", "EUC-KR",$_FILES['b_file']['name']);
+$folder = "../../upload/".$filename;
+move_uploaded_file($tmpfile,$folder);
+
 // write.php에서 사용자가 전송한 form에 username, userpw, title, content의 값이 모두 있다면 쿼리문을 실행
 // 작성 성공 알림과 location.href을 통해 list 화면으로 이동
 if($username && $userpw && $title && $content){
-    $sql = mq("insert into board(name,pw,title,content,date) values('".$username."',
-            '".$userpw."','".$title."','".$content."','".$date."')");
+    $sql = mq("insert into board(name,pw,title,content,date,file) values('".$username."',
+            '".$userpw."','".$title."','".$content."','".$date."','".$o_name."')");
     echo "<script>
     alert('게시글이 작성되었습니다.');
     location.href='/myBoard';</script>";

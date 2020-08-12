@@ -37,8 +37,9 @@ $sql = mq("select * from board order by idx desc limit $limit_idx, $page_set");
 <body>
     <div id="board_area">
         <h1>게시판</h1>
-        <h4>게시글 목록</h4>
-        <p4>총 <?php echo $total ?>개의 게시글</p4>
+        <br>
+        <p>총 <?php echo $total ?>개의 게시글</p>
+        <a href="/myBoard"><button><img class="img_btn" src="/myBoard/img/refresh.png"></button></a>
         <table class="list-table">
             <thead>
                 <tr>
@@ -77,7 +78,7 @@ $sql = mq("select * from board order by idx desc limit $limit_idx, $page_set");
             <?php } //while문 종료 ?>
         </table>
         <div id="write_btn">
-            <a href="/myBoard/page/board/write.php"><button>글쓰기</button></a>
+            <a href="/myBoard/page/board/write.php"><img class="img_btn" src="/myBoard/img/write.png"></a>
         </div>
         <?php 
             //페이지번호 & 블럭설정
@@ -97,13 +98,13 @@ $sql = mq("select * from board order by idx desc limit $limit_idx, $page_set");
             $next_block_page = $next_block*$block_set-($block_set-1); //다음블럭 페이지번호
 
             //페이징화면
-            echo ($prev_page > 0) ? "　　　　　　　　　　　　　　　　　　　　　　　<a href='".$_SERVER['PHP_SELF']."?page=".$prev_page."'>[prev]</a> " : "　　　　　　　　　　　　　　　　　　　　　　　[prev] "; 
-            echo ($prev_block > 0) ? "<a href='".$_SERVER['PHP_SELF']."?page=".$prev_block_page."'>...</a> " : "... "; 
+            echo ($prev_page > 0) ? "　　　　　　　　　　　　　　　　　　　　　　　<a href='".$_SERVER['PHP_SELF']."?page=".$prev_page."'><img style='height:17px; width:17px;' src='/myBoard/img/prev.png'></a> " : "　　　　　　　　　　　　　　　　　　　　　　　<img style='height:17px; width:17px;' src='/myBoard/img/prev.png'> "; 
+            echo ($prev_block > 0) ? "<a href='".$_SERVER['PHP_SELF']."?page=".$prev_block_page."'>˙˙˙ </a> " : "˙˙˙ "; 
             for ($i=$first_page; $i<=$last_page; $i++) { 
                 echo ($i != $page) ?"<a href='".$_SERVER['PHP_SELF']."?page=".$i."'>$i</a> " : "<b>$i</b> "; 
             } 
-            echo ($next_block <= $total_block) ? "<a href='".$_SERVER['PHP_SELF']."?page=".$next_block_page."'>...</a> " : "... "; 
-            echo ($next_page <= $total_page) ? "<a href='".$_SERVER['PHP_SELF']."?page=".$next_page."'>[next]</a>" : "[next]"; 
+            echo ($next_block <= $total_block) ? "<a href='".$_SERVER['PHP_SELF']."?page=".$next_block_page."'>˙˙˙ </a> " : "˙˙˙ "; 
+            echo ($next_page <= $total_page) ? "<a href='".$_SERVER['PHP_SELF']."?page=".$next_page."'><img style='height:17px; width:17px;' src='/myBoard/img/next.png'></a>" : "<img style='height:17px; width:17px;' src='/myBoard/img/next.png'>"; 
         ?>
 
     </div>

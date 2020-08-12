@@ -62,8 +62,9 @@ ul li {
 	margin-top:30px;
 }
 #in_name textarea {
+	
 	font-weight:bold;
-	font-size:26px;
+	font-size:20px;
 	color:#333;
 	width: 900px;
 	border:none;

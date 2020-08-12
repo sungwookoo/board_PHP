@@ -11,6 +11,10 @@
 </head>
 
 <body>
+<div id="board_area">
+        <h1>게시판</h1>
+        <br>
+</div>
     <?php
         $bno = $_GET['idx']; // bno = idx 
         $hit = mysqli_fetch_array(mq("select * from board where idx ='".$bno."'")); // db에서 해당 게시글을 idx값으로 찾아서 hit에 저장
@@ -19,6 +23,7 @@
         $sql = mq("select * from board where idx='".$bno."'"); // 업데이트한 게시글을 $sql 에 다시 불러옴
         $board = $sql->fetch_array(); // 그리고 최종적으로 사용자가 제목을 클릭해서 내용을 보게되는 게시글 $board 변수에 저장
     ?>
+
     <!-- read -->
     <div id="board_read">
         <h2><?php echo $board['title']; ?></h2>
@@ -36,6 +41,9 @@
             <div id="bo_line"></div>
 
         </div>
+        <div id="board_area" style="margin-top:15px; color:blue; font-weight:bolder">
+        파일 : <a href="../../upload/<?php echo $board['file'];?>" download><?php echo $board['file']; ?></a>
+    </div>
 
 
         <div id="bo_content">
