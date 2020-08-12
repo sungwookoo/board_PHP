@@ -2,7 +2,28 @@
 // DB정보가 저장되어있는 db.php 파일을 include 
 // $_server['document_root']는 httpd.conf 파일에 설정된 웹서버의 루트 디렉토리 -> 현재경로 C:\server\www 
 $sql = mq("select * from board");
-$total = mysqli_num_rows($sql);
+$total = mysqli_num_rows($sql); // 게시글 총 개수
+
+$page_set = 10;
+$block_set = 5;
+
+$sql=mq("select count(idx) as total from board");
+$board=mysqli_fetch_array($sql);
+
+$total_page = ceil($total / $page_set); // 총 페이지 수 (올림)
+$total_block = ceil($total_page / $block_set); //총 블럭 수 (올림)
+if(isset($_GET['page'])) {
+    $page = $_GET['page'];
+} else {
+    $page = 1;
+}// 현재 페이지 (넘어온값)
+$block=ceil ($page / $block_set); // 현재 블럭 (올림)
+
+$limit_idx = ($page-1) * $page_set; // limit 시작 위치
+
+//현재 페이지 쿼리
+$sql = mq("select * from board order by idx desc limit $limit_idx, $page_set");
+
 ?>
 
 <!doctype html>
@@ -28,9 +49,10 @@ $total = mysqli_num_rows($sql);
                 </tr>
             </thead>
             <?php
-            $sql = mq("select * from board order by idx desc limit 0,10"); 
+            // $sql = mq("select * from board order by idx desc limit 0,10"); 
             // 게시글 10개씩표시
             while($board=$sql->fetch_array()){
+                
             //mysqli_fetch_array : 쿼리를 날려 얻은 result set에서 레코드를 1개씩 리턴해주는 함수 [일반배열+연관배열 모두 값으로 갖는 배열을 리턴]
                   $title=$board["title"];
                   if(strlen($title)>30)
@@ -49,11 +71,38 @@ $total = mysqli_num_rows($sql);
                         <td width="100"><?php echo $board['hit']; ?></td>
                     </tr>
                 </tbody>
-            <?php } ?>
+            <?php } //while문 종료 ?> 
         </table>
         <div id="write_btn">
             <a href="/myBoard/page/board/write.php"><button>글쓰기</button></a>
         </div>
+        <?php 
+            //페이지번호 & 블럭설정
+            $first_page = (($block-1) * $block_set)+1; //첫번째 페이지번호
+            $last_page = min($total_page, $block*$block_set); //마지막 페이지번호
+
+            $prev_page = $page-1; // 이전페이지
+            $next_page = $page+1; // 다음페이지
+
+            $prev_block = $block-1; // 이전블럭
+            $next_block = $block+1; // 다음블럭
+
+            //이전블럭을 블럭의 마지막으로
+            $prev_block_page = $prev_block*$block_set; //이전블럭 페이지번호
+            //이전블럭을 블럭의 처음으로
+            // $prev_block_page = $prev_block * $block_set-($block_set-1);
+            $next_block_page = $next_block*$block_set-($block_set-1); //다음블럭 페이지번호
+
+            //페이징화면
+            echo ($prev_page > 0) ? "　　　　　　　　　　　　　　　　　　　　　　　　<a href='".$_SERVER['PHP_SELF']."?page=".$prev_page."'>[prev]</a> " : "　　　　　　　　　　　　　　　　　　　　　　　　[prev] "; 
+            echo ($prev_block > 0) ? "<a href='".$_SERVER['PHP_SELF']."?page=".$prev_block_page."'>...</a> " : "... "; 
+            for ($i=$first_page; $i<=$last_page; $i++) { 
+                echo ($i != $page) ?"<a href='".$_SERVER['PHP_SELF']."?page=".$i."'>$i</a> " : "<b>$i</b> "; 
+            } 
+            echo ($next_block <= $total_block) ? "<a href='".$_SERVER['PHP_SELF']."?page=".$next_block_page."'>...</a> " : "... "; 
+            echo ($next_page <= $total_page) ? "<a href='".$_SERVER['PHP_SELF']."?page=".$next_page."'>[next]</a>" : "[next]"; 
+        ?>
+        
     </div>
 </body>
 </html>

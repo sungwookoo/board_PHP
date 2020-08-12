@@ -23,20 +23,31 @@
     <div id="board_read">
         <h2><?php echo $board['title']; ?></h2>
         <div id="user_info">
+        <div id="bo_ser">
+            <ul>
+                <li><a href="/myBoard"><strong>[목록]</strong></a></li>
+                <li><a href="modify.php?idx=<?php echo $board['idx']; ?>"><strong>[수정]</strong></a></li>
+                <li><a href="pw_check.php?idx=<?php echo $board['idx']; ?>" onclick="window.open(this.href,'팝업창','width=400,height=240');return false;"><strong>[삭제]</strong></a></li>
+            </ul>
+        </div>
             <?php echo $board['name']; ?> <?php echo $board['date']; ?> 조회:<?php echo $board['hit']; ?>
             <div id="bo_line"></div>
+            
         </div>
+        
+        
         <div id="bo_content">
             <?php echo nl2br("$board[content]"); ?>
             <!-- nl2br : 문자열 중 \n을 <br>로 변환 / 게시글 내용의 엔터(줄바꿈)을 표현하기위해 사용 -->
+            <br><br>
         </div>
 
         <!-- function -->
         <div id="bo_ser">
-            <ul>
-                <li><a href="/myBoard">[목록]</a></li>
-                <li><a href="modify.php?idx=<?php echo $board['idx']; ?>">[수정]</a></li>
-                <li><a href="pw_check.php?idx=<?php echo $board['idx']; ?>" onclick="window.open(this.href,'팝업창','width=400,height=240');return false;">[삭제]</a></li>
+            <ul><br>
+                <li><a href="/myBoard"><strong>[목록]</strong></a></li>
+                <li><a href="modify.php?idx=<?php echo $board['idx']; ?>"><strong>[수정]</strong></a></li>
+                <li><a href="pw_check.php?idx=<?php echo $board['idx']; ?>" onclick="window.open(this.href,'팝업창','width=400,height=240');return false;"><strong>[삭제]</strong></a></li>
                 
             </ul>
         </div>
