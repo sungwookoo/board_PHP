@@ -1,10 +1,12 @@
 <?php include $_SERVER['DOCUMENT_ROOT']."/myBoard/db.php"; 
 // DB정보가 저장되어있는 db.php 파일을 include 
 // $_server['document_root']는 httpd.conf 파일에 설정된 웹서버의 루트 디렉토리 -> 현재경로 C:\server\www 
-?> 
+$sql = mq("select * from board");
+$total = mysqli_num_rows($sql);
+?>
 
 <!doctype html>
-<head>
+<head></head>
     <meta charset="UTF-8">
     <title>게시판</title>
     <link rel="stylesheet" type="text/css" href="/myBoard/css/style.css">
@@ -14,6 +16,7 @@
     <div id="board_area">
         <h1>게시판</h1>
         <h4>게시글 목록</h4> 
+        <p4>총 <?php echo $total ?>개의 게시글</p4>
         <table class="list-table">
             <thead>
                 <tr>

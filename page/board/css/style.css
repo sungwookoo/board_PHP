@@ -139,3 +139,35 @@ ul li {
 	float:left;
 	margin-left:10px;
 }
+
+/* 삭제 pw_check */
+.pwchk{
+	width:400px;
+	height:300px;
+	border:1px solid #ccc;
+	margin:20px;
+	padding:25px 15px;
+	box-sizing:border-box;
+}
+
+div.centerOuter {
+	position: absolute;
+	top: 50%; left: 50%;
+	margin: -210px 0 0 -290px;
+	width: 505px; height: 305px;
+	border: 1px solid #ccc;
+	padding: 10px;
+  }
+
+div.centerInner {  
+	position: absolute;
+	top: 50%; left: 50%;
+	margin: -90px 0 0 -130px;
+	width: 300px; height: 200px;
+	border: 1px solid #ccc;
+	/* font: 2em "Palatino Linotype", "Book Antiqua", Palatino, serif; */
+	color: darkbrown;
+	text-align: center;
+}
+  
+  

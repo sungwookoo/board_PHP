@@ -36,8 +36,7 @@
             <ul>
                 <li><a href="/myBoard">[목록]</a></li>
                 <li><a href="modify.php?idx=<?php echo $board['idx']; ?>">[수정]</a></li>
-                <li><a href="delete.php?idx=<?php echo $board['idx']; ?>">[삭제]</a></li>
-                <li><a href="pw_check.php?idx=<?php echo $board['idx']; ?>" onclick="window.open(this.href,'팝업창','width=400,height=400');return false;">[삭제]</a></li>
+                <li><a href="pw_check.php?idx=<?php echo $board['idx']; ?>" onclick="window.open(this.href,'팝업창','width=400,height=240');return false;">[삭제]</a></li>
                 
             </ul>
         </div>
