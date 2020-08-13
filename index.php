@@ -4,7 +4,7 @@
 $sql = mq("select * from board");
 $total = mysqli_num_rows($sql); // 게시글 총 개수
 
-$page_set = 15;
+$page_set = 10;
 $block_set = 5;
 
 $sql=mq("select count(idx) as total from board");
@@ -69,8 +69,7 @@ $sql = mq("select * from board order by idx desc limit $limit_idx, $page_set");
                     <!-- <td width="500"><a
                             href="/myBoard/page/board/read.php?idx=<?php echo $board["idx"];?> "><?php echo $title;?></a>
                     </td> -->
-                    <td width="500"><a
-                            href="/myBoard/hit.php?idx=<?php echo $board["idx"];?> "><?php echo $title;?></a>
+                    <td width="500"><a href="/myBoard/hit.php?idx=<?php echo $board["idx"];?> "><?php echo $title;?></a>
                     </td>
                     <!-- 제목을 클릭하면 해당 게시글 내용을 볼 수 있도록 게시글의 id값을 통해 링크 -->
                     <td width="120"><?php echo $board['name']?></td>
@@ -109,8 +108,19 @@ $sql = mq("select * from board order by idx desc limit $limit_idx, $page_set");
             echo ($next_block <= $total_block) ? "<a href='".$_SERVER['PHP_SELF']."?page=".$next_block_page."'>··· </a> " : "··· "; 
             echo ($next_page <= $total_page) ? "<a href='".$_SERVER['PHP_SELF']."?page=".$next_page."'><img style='height:17px; width:17px;' src='/myBoard/img/next.png'></a>" : "<img style='height:17px; width:17px;' src='/myBoard/img/next.png'>"; 
         ?>
+        <br><br>
+        <!-- 검색 -->
+        <div id="search_box">
+            <form action="/myBoard/page/board/search_result.php" method="get">
+                <select name="catgo">
+                    <option value="title">제목</option>
+                    <option value="name">글쓴이</option>
+                    <option value="content">내용</option>
+                </select>
+                <input type="text" name="search" size="40" required="required" /> <button>검색</button>
+            </form>
+        </div>
 
-    </div>
+    </div> <!-- body 최상위 div 끝  -->
 </body>
-
 </html>

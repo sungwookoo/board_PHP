@@ -32,10 +32,11 @@
                 </div>
                 <div id="in_pw">
                     <input type="password" name="pw" id="upw" placeholder="비밀번호" required />
+                </div><br>
                 <div id="in_file">
                     <input type="file" value="1" name="b_file">
                 </div>
-                </div>
+                
                 <div class="bt_se">
                     <button type="submit" onclick="submitContents()">작성</button>
                 </div>

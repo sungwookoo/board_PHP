@@ -42,6 +42,7 @@
                 <div id="in_pw">
                     <input type="password" name="pw" id="upw" placeholder="비밀번호" required />
                 </div>
+                <br>
                 <div id="in_file">
                     <input type="file" value="1" name="b_file"> 기존 첨부파일 : <?php if($board['file']==""||null)echo "없음"; else echo $board['file']; ?>
                 </div>
