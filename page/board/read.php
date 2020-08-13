@@ -42,7 +42,15 @@
 
         </div>
         <div id="board_area" style="margin-top:15px; color:blue; font-weight:bolder">
-        파일 : <a href="../../upload/<?php echo $board['file'];?>" download><?php echo $board['file']; ?></a>
+        <?php if($board['file']==""||$board['file']==null) echo "첨부된 파일이 없습니다.";
+            else { 
+                ?>첨부된 파일 : <a href="../../upload/<?php echo $board['file'];?>" 
+            download><?php echo $board['file']; ?></a>
+        <?php } 
+        ?>
+            
+
+
     </div>
 
 

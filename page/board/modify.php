@@ -20,14 +20,14 @@
         <h1><a href="/myBoard">게시판</a></h1><br>
         <h4>게시글 수정</h4>
         <div id="write_area">
-            <form action="modify_ok.php?idx=<?php echo $bno; ?>" method="post">
+            <form action="modify_ok.php?idx=<?php echo $bno; ?>" method="post" enctype="multipart/form-data">
                 <div id="in_title">
                     <textarea name="title" id="utitle" rows="1" cols="55" placeholder="제목" maxlength="100"
                         required> <?php echo $board['title']; ?></textarea>
                 </div>
                 <div class="wi_line"></div>
                 <div id="in_name">
-                    <textarea name="name" id="uname" rows="1" cols="55" placeholder="글쓴이" maxlength="100"
+                    <textarea name="name" id="uname" rows="1" cols="55" placeholder="글쓴이" maxlength="16"
                         required><?php echo $board['name']; ?></textarea>
                 </div>
                 <div class="wi_line"></div>
@@ -41,6 +41,9 @@
 
                 <div id="in_pw">
                     <input type="password" name="pw" id="upw" placeholder="비밀번호" required />
+                </div>
+                <div id="in_file">
+                    <input type="file" value="1" name="b_file"> 기존 첨부파일 : <?php if($board['file']==""||null)echo "없음"; else echo $board['file']; ?>
                 </div>
                 <div class="bt_se">
                 <button type="submit" onclick="submitContents()">글 작성</button>

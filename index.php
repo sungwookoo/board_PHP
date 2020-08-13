@@ -99,11 +99,11 @@ $sql = mq("select * from board order by idx desc limit $limit_idx, $page_set");
 
             //페이징화면
             echo ($prev_page > 0) ? "　　　　　　　　　　　　　　　　　　　　　　　<a href='".$_SERVER['PHP_SELF']."?page=".$prev_page."'><img style='height:17px; width:17px;' src='/myBoard/img/prev.png'></a> " : "　　　　　　　　　　　　　　　　　　　　　　　<img style='height:17px; width:17px;' src='/myBoard/img/prev.png'> "; 
-            echo ($prev_block > 0) ? "<a href='".$_SERVER['PHP_SELF']."?page=".$prev_block_page."'>˙˙˙ </a> " : "˙˙˙ "; 
+            echo ($prev_block > 0) ? "<a href='".$_SERVER['PHP_SELF']."?page=".$prev_block_page."'>··· </a> " : "··· "; 
             for ($i=$first_page; $i<=$last_page; $i++) { 
                 echo ($i != $page) ?"<a href='".$_SERVER['PHP_SELF']."?page=".$i."'>$i</a> " : "<b>$i</b> "; 
             } 
-            echo ($next_block <= $total_block) ? "<a href='".$_SERVER['PHP_SELF']."?page=".$next_block_page."'>˙˙˙ </a> " : "˙˙˙ "; 
+            echo ($next_block <= $total_block) ? "<a href='".$_SERVER['PHP_SELF']."?page=".$next_block_page."'>··· </a> " : "··· "; 
             echo ($next_page <= $total_page) ? "<a href='".$_SERVER['PHP_SELF']."?page=".$next_page."'><img style='height:17px; width:17px;' src='/myBoard/img/next.png'></a>" : "<img style='height:17px; width:17px;' src='/myBoard/img/next.png'>"; 
         ?>
 

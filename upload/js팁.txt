@@ -1,0 +1,18 @@
+javascript tip
+
+★팝업 관련★
+[팝업창을 닫으면서 부모창을 새로고침하는 방법]
+- 자식창에서 window.close() 하기전에
+opener.parent.location=’부모창주소(원하는주소)’;
+
+예2)
+opener.parent.location.reload();
+window.close();
+– 이런식으로 reload를 써줘도 된다.
+
+ 
+window.close() 는
+
+<(input type=”button” value=”목록” style=”width:50px;” (onclick=”window.close();” />
+
+이런식으로 써주면 목록버튼을 누를때 팝업창이 닫히게 된다.
