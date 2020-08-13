@@ -4,7 +4,7 @@
 $sql = mq("select * from board");
 $total = mysqli_num_rows($sql); // 게시글 총 개수
 
-$page_set = 10;
+$page_set = 15;
 $block_set = 5;
 
 $sql=mq("select count(idx) as total from board");
@@ -66,8 +66,11 @@ $sql = mq("select * from board order by idx desc limit $limit_idx, $page_set");
             <tbody>
                 <tr>
                     <td width="70"><?php echo $board['idx']; ?></td>
-                    <td width="500"><a
+                    <!-- <td width="500"><a
                             href="/myBoard/page/board/read.php?idx=<?php echo $board["idx"];?> "><?php echo $title;?></a>
+                    </td> -->
+                    <td width="500"><a
+                            href="/myBoard/hit.php?idx=<?php echo $board["idx"];?> "><?php echo $title;?></a>
                     </td>
                     <!-- 제목을 클릭하면 해당 게시글 내용을 볼 수 있도록 게시글의 id값을 통해 링크 -->
                     <td width="120"><?php echo $board['name']?></td>
