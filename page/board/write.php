@@ -8,7 +8,6 @@
 </head>
 
 <body>
-   
     <div id="board_write">
         <h1><a href="/myBoard">게시판</a></h1>
         
